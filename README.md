@@ -2,7 +2,7 @@
 
 Official implementation of **TopoDiff-DGA: Topology-Aware Diffusion for Drug–Gene Association Prediction**.
 
-TopoDiff-DGA reconstructs a complete gene-indexed association profile for a target drug. The implementation follows the paper rather than the earlier embedding-level prototype that previously occupied this repository.
+TopoDiff-DGA reconstructs a complete gene-indexed association profile for each target drug by combining topology-aware profile diffusion with drug-specific context.
 
 ## Method-to-code correspondence
 
@@ -18,7 +18,7 @@ Only training associations are used to construct the two graph views. A zero in 
 
 ```text
 src/topodiff_dga/       model, graph construction, data loading, and metrics
-data/dgidb/folds/       DGIdb 4.0 train/test matrices retained from the repository
+data/dgidb/folds/       DGIdb 4.0 train/test matrices
 data/dgidb/split/       DGIdb 4.0 train/validation/test matrices
 tests/                  small end-to-end consistency test
 train.py                training and evaluation entry point

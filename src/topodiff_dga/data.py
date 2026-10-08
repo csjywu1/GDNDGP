@@ -60,10 +60,12 @@ def validation_split(
     for drug, gene in zip(val_rows, val_cols):
         held_by_row.setdefault(drug, set()).add(gene)
     for drug, held in held_by_row.items():
-        old_rows = train.rows[drug]
-        old_data = train.data[drug]
-        train.rows[drug] = [gene for gene in old_rows if gene not in held]
-        train.data[drug] = [value for gene, value in zip(old_rows, old_data) if gene not in held]
+        current_rows = train.rows[drug]
+        current_data = train.data[drug]
+        train.rows[drug] = [gene for gene in current_rows if gene not in held]
+        train.data[drug] = [
+            value for gene, value in zip(current_rows, current_data) if gene not in held
+        ]
     val = sp.coo_matrix(
         (np.ones(len(val_rows), dtype=np.float32), (val_rows, val_cols)),
         shape=train.shape,
